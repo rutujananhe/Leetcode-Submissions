@@ -1,7 +1,7 @@
 class Solution {
 public:
     int mostFrequentEven(vector<int>& nums) {
-        map<int,int> mp;
+        unordered_map<int,int> mp;
         for(auto& i:nums){
             if(i%2==0) mp[i]++;
         }
@@ -11,6 +11,9 @@ public:
             if(val>freq){
                 freq=val;
                 max_even=key;
+            }
+            if(freq==val){
+                max_even=min(max_even,key);
             }
         }
         return max_even;
